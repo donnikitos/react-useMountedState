@@ -10,39 +10,55 @@ Install with [npm](https://www.npmjs.com/):
 
 ```bash
 # via npm
-npm install --save-dev @donnikitos/react-useglobal
+npm install --save-dev @donnikitos/react-usemountedstate
+
+# via yarn
+yarn add --dev @donnikitos/react-usemountedstate
 ```
 
 ## Usage
 
-The `useGlobal` function takes a string as the primary argument and may take a second argument - the initial value. The first argument, the supplied string
-represents the name of a global variable, that the hook is supposed to interact with. The second argument is optional and represents the initial value, that
-will be set to the global variable.
-If the global variable is alrady set and has a value, the second argument (initial value) will be ignored.
-The hook returns a tuple of a getter variable and a setter function very much like a normal useState hook in React.js.
+The `useMountedState` function takes no arguments, it creates the slightly special `useState` hook.
+It returns a function, that is supposed to be used instead of the original `useState`.
+Otherwise the useState usage remains the same.
 
 ```js
-import React from 'react';
-import useGlobal from '@donnikitos/react-useglobal';
+import React, {useState as useReactState} from 'react';
+import useMountedState from '@donnikitos/react-usemountedstate';
 
 
 // use in Component
-export default function Comp(props) {
-	const [globalX, setGlobalX] = useGlobal('x');						// Access global variable x
-	const [globalY, setGlobalY] = useGlobal('y', 'Hello World');		// Access global variable y and set initial value to string 'Hello World'
-	const [tryY, setTryY] = useGlobal('y', 'test me');					// Access global variable y, second argument will be ignored
+function App(props) {
+	const [showComp, setShowComp] = useReactState(true);
 
 
 	React.useEffect(() => {
-		setGlobalX('i am global');										// change global variable
+		setTimeout(() => {
+			setShowComp(false);
+		}, 3000);
+	}, []);
+
+
+	return (<>
+		{showComp && <Comp />}
+	</>);
+};
+
+function Comp(props) {
+	const useState = useMountedState();								// Create useState hook -> instead of the original React.useState
+
+	const [somestate, setSomestate] = useState('initial value');	// Use the new hook as usual! Just like React.useState
+
+
+	React.useEffect(() => {
+		setTimeout(() => {
+			setSomestate('Other value!');							// That should not be done!!! It should be cleaned up properly!
+		}, 6000);
 	}, []);
 
 
 	return (<div>
-		{globalX} {/* output: i am global */}<br />
-		<br />
-		{globalY} {/* output: Hello World */}<br />
-		{tryY} {/* output: Hello World */}<br />
+		{somestate}
 	</div>);
 };
 ```
