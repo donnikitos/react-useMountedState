@@ -1,16 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = require("react");
-function useMountedState() {
-    const isMounted = react_1.useRef(true);
-    react_1.useEffect(() => {
+import { useEffect, useRef, useState as ReactUseState } from 'react';
+function useMountedStateHook() {
+    const isMounted = useRef(true);
+    useEffect(() => {
         isMounted.current = true;
         return () => {
             isMounted.current = false;
         };
     });
     return ($initalValue) => {
-        const [state, setState] = react_1.useState($initalValue);
+        const [state, setState] = ReactUseState($initalValue);
         return [
             state,
             ($newVal) => {
@@ -22,5 +20,5 @@ function useMountedState() {
     };
 }
 ;
-exports.default = useMountedState;
-//# sourceMappingURL=index.js.map
+export default useMountedStateHook;
+export const useMountedState = useMountedStateHook;

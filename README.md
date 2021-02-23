@@ -1,8 +1,8 @@
 useMountedState
 ===========
 
-[![NPM version](https://badgen.net/npm/v/react-usemountedstate)](https://www.npmjs.com/package/@donnikitos/react-usemountedstate)
-[![License](https://badgen.net/npm/license/react-usemountedstate)](https://www.npmjs.com/package/@donnikitos/react-usemountedstate)
+[![NPM version](https://badgen.net/npm/v/react-usemountedstate)](https://www.npmjs.com/package/react-usemountedstate)
+[![License](https://badgen.net/npm/license/react-usemountedstate)](https://www.npmjs.com/package/react-usemountedstate)
 
 A React.js hook to use the official useState hook on super-duper complicated components with a lot asynchronous `setStates` that might be executed, when a component might be already unmounted.
 
@@ -10,10 +10,10 @@ Install with [npm](https://www.npmjs.com/):
 
 ```bash
 # via npm
-npm install --save-dev @donnikitos/react-usemountedstate
+npm install react-usemountedstate
 
 # via yarn
-yarn add --dev @donnikitos/react-usemountedstate
+yarn add react-usemountedstate
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ Otherwise the useState usage remains the same.
 
 ```js
 import React, {useState as useReactState} from 'react';
-import useMountedState from '@donnikitos/react-usemountedstate';
+import useMountedState from 'react-usemountedstate';
 
 
 // use in Component

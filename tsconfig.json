@@ -3,6 +3,7 @@
 		"baseUrl": "./",
 		"target": "ES2015",
 		"module": "ES2015",
+		"moduleResolution": "Node",
 		"declaration": true,
 		"noImplicitAny": false,
 		"noEmitOnError": true,

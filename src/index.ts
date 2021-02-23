@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState as ReactUseState } from 'react';
 
-function useMountedState() {
+function useMountedStateHook() {
 	const isMounted = useRef(true);
 
 	useEffect(() => {
@@ -24,4 +24,5 @@ function useMountedState() {
 		];
 	};
 };
-export default useMountedState;
+export default useMountedStateHook;
+export const useMountedState = useMountedStateHook;
