@@ -1,0 +1,21 @@
+{
+  "name": "react-usemountedstate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "compile": "npx tsc --build",
+    "clean": "npx tsc --clean"
+  },
+  "keywords": [],
+  "author": "Nikita 'donnikitos' Nitichevski <me@donnikitos.com> (https://donnikitos.com)",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.2",
+    "typescript": "^4.1.5"
+  }
+}
