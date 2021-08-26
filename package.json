@@ -6,8 +6,8 @@
 	"types": "index.d.ts",
 	"scripts": {
 		"compile": "npx tsc --build",
-		"clean": "rm index.js && rm index.d.ts",
-		"prepack": "npx run clean && npx run compile",
+		"clean": "rm -f index.js && rm -f index.d.ts",
+		"prepack": "npm run clean && npm run compile",
 		"prettify": "npx pretty-quick --staged",
 		"lintify": "npx eslint src/**/*.{ts,tsx,json} --no-error-on-unmatched-pattern --fix"
 	},
