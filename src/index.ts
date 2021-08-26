@@ -23,6 +23,7 @@ function useMountedStateHook() {
 			},
 		];
 	};
-};
+}
+
 export default useMountedStateHook;
 export const useMountedState = useMountedStateHook;
