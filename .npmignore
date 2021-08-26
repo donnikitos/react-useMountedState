@@ -1,2 +1,13 @@
+.vscode
+node_modules
 src
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+.npmignore
+.prettierrc
+
 tsconfig.json
+package-lock.json
+yarn.lock

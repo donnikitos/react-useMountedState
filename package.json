@@ -6,8 +6,15 @@
 	"types": "index.d.ts",
 	"scripts": {
 		"compile": "npx tsc --build",
-		"clean": "rm index.js && rm index.d.ts"
+		"clean": "rm index.js && rm index.d.ts",
+		"prepack": "npx run clean && npx run compile",
+		"prettify": "npx pretty-quick --staged",
+		"lintify": "npx eslint src/**/*.{ts,tsx,json} --no-error-on-unmatched-pattern --fix"
 	},
+	"pre-commit": [
+		"prettify",
+		"lintify"
+	],
 	"keywords": [
 		"React.js",
 		"useState",
@@ -25,9 +32,18 @@
 	"author": "Nikita 'donnikitos' Nitichevski <me@donnikitos.com> (https://donnikitos.com)",
 	"license": "MIT",
 	"devDependencies": {
-		"@types/react": "^17.0.2",
 		"react": "^17.0.1",
-		"typescript": "^4.1.5"
+		"@types/react": "^17.0.2",
+		"typescript": "^4.3.5",
+		"@typescript-eslint/eslint-plugin": "^4.28.4",
+		"@typescript-eslint/parser": "^4.28.4",
+		"eslint": "^7.31.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-prettier": "^3.4.0",
+		"eslint-plugin-react": "^7.24.0",
+		"prettier": "^2.3.2",
+		"pretty-quick": "^3.1.1",
+		"pre-commit": "^1.2.2"
 	},
 	"homepage": "https://github.com/donnikitos/react-useMountedState#readme",
 	"repository": {
