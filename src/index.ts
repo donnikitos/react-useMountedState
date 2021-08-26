@@ -9,7 +9,7 @@ function useMountedStateHook() {
 		return () => {
 			isMounted.current = false;
 		};
-	});
+	}, []);
 
 	return <T extends any>($initalValue: T) => {
 		const [state, setState] = ReactUseState<T>($initalValue);
