@@ -1,4 +1,9 @@
-import { useEffect, useRef, useState as ReactUseState } from 'react';
+import {
+	SetStateAction,
+	useEffect,
+	useRef,
+	useState as ReactUseState,
+} from 'react';
 
 function useMountedStateHook() {
 	const isMounted = useRef(true);
@@ -11,15 +16,15 @@ function useMountedStateHook() {
 		};
 	}, []);
 
-	return <T extends any>($initalValue: T) => {
-		const [state, setState] = ReactUseState<T>($initalValue);
+	return <T extends unknown>(initialValue: T | (() => T)) => {
+		const [state, setState] = ReactUseState<T>(initialValue);
 
 		return [
 			state,
-			($newVal: T) => {
+			(newValue: SetStateAction<T>) => {
 				if (!isMounted.current) return;
 
-				setState($newVal);
+				setState(newValue);
 			},
 		];
 	};
